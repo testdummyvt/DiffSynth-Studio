@@ -1,6 +1,7 @@
 torch>=2.0.0
 torchvision
 transformers
+kernels
 imageio
 imageio[ffmpeg]
 safetensors

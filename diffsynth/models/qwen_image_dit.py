@@ -10,6 +10,15 @@ try:
     FLASH_ATTN_3_AVAILABLE = True
 except ModuleNotFoundError:
     FLASH_ATTN_3_AVAILABLE = False
+    
+# Flash Attention using Huggingface kernels
+try:
+    from kernels import get_kernel
+    flash_attn_interface = get_kernel("kernels-community/flash-attn3")
+    print("Using flash attention 3 from kernels-community/flash-attn3")
+    FLASH_ATTN_3_AVAILABLE = True
+except ModuleNotFoundError:
+    FLASH_ATTN_3_AVAILABLE = False
 
 
 def qwen_image_flash_attention(q: torch.Tensor, k: torch.Tensor, v: torch.Tensor, num_heads: int, attention_mask = None, enable_fp8_attention: bool = False):

@@ -24,6 +24,14 @@ try:
 except ModuleNotFoundError:
     SAGE_ATTN_AVAILABLE = False
     
+# Flash Attention using Huggingface kernels
+try:
+    from kernels import get_kernel
+    flash_attn_interface = get_kernel("kernels-community/flash-attn3")
+    print("Using flash attention 3 from kernels-community/flash-attn3")
+    FLASH_ATTN_3_AVAILABLE = True
+except ModuleNotFoundError:
+    FLASH_ATTN_3_AVAILABLE = False
     
 def flash_attention(q: torch.Tensor, k: torch.Tensor, v: torch.Tensor, num_heads: int, compatibility_mode=False):
     if compatibility_mode:
