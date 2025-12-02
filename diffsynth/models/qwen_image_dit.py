@@ -17,7 +17,7 @@ try:
     flash_attn_interface = get_kernel("kernels-community/flash-attn3")
     print("Using flash attention 3 from kernels-community/flash-attn3")
     FLASH_ATTN_3_AVAILABLE = True
-except ModuleNotFoundError:
+except Exception:
     FLASH_ATTN_3_AVAILABLE = False
 
 
